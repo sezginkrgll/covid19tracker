@@ -27,7 +27,7 @@ export const covidSlice = createSlice({
       state.status = "succeeded";
     },
     [fetchCovid.rejected]: (state, action) => {
-      state.status = "faild";
+      state.status = "failed";
       state.error = action.error.message;
     },
   },

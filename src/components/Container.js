@@ -12,6 +12,7 @@ import { fetchCovid } from "../redux/covidSlice";
 function Container() {
   const status = useSelector((state) => state.covid.status);
   const data = useSelector((state) => state.covid.data);
+  const error = useSelector((state) => state.covid.error);
 
   const dispatch = useDispatch();
 
@@ -20,6 +21,10 @@ function Container() {
       dispatch(fetchCovid("world"));
     }
   }, [dispatch, status]);
+
+  if (status === "failed") {
+    return <div>{error}</div>;
+  }
 
   return (
     <>
